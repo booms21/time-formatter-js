@@ -4,7 +4,7 @@
  * GitHub： https://github.com/booms21/time-formatter-js
  * js时间类型格式化工具库：指定时间格式， 时间排序、间隔天数、跳动时间...
  */
-(function() {
+(function () {
   ("use strict");
   var _timeFormatterInstance = null; //内部活动的实例
   function TimeFormatter(options) {
@@ -53,7 +53,7 @@
    * TimeFormatter.prototype.getMonthFirstDate 获取对应日期月份的第一天
    * @param {Date} date
    */
-  TimeFormatter.prototype.getMonthFirstDate = function(date) {
+  TimeFormatter.prototype.getMonthFirstDate = function (date) {
     return this.getDateStr(
       this.initModel.defaultFormat,
       _validDate(date).setDate(1)
@@ -63,7 +63,7 @@
    * TimeFormatter.prototype.getMonthLastDate 获取对应日期月份的最后一天
    * @param {Date} date
    */
-  TimeFormatter.prototype.getMonthLastDate = function(date) {
+  TimeFormatter.prototype.getMonthLastDate = function (date) {
     var date = _validDate(date);
     return this.getDateStr(
       this.initModel.defaultFormat,
@@ -75,7 +75,7 @@
    * @param {Date} startTime
    * @param {Date} endTime
    */
-  TimeFormatter.prototype.getDaysBetween = function(startTime, endTime) {
+  TimeFormatter.prototype.getDaysBetween = function (startTime, endTime) {
     return parseInt(
       Math.abs(
         _validDate(startTime).getTime() - _validDate(endTime).getTime()
@@ -88,7 +88,7 @@
    * @param {Date} date
    *
    */
-  TimeFormatter.prototype.getDay = function(date) {
+  TimeFormatter.prototype.getDay = function (date) {
     var day = _validDate(date).getDay();
     var dayMap = [
       "星期天",
@@ -106,7 +106,7 @@
    * @param {Date} date
    * @param {Number} num 可传入负数
    */
-  TimeFormatter.prototype.getDateStrByNumber = function(num, date) {
+  TimeFormatter.prototype.getDateStrByNumber = function (num, date) {
     var date = _validDate(date);
     return this.getDateStr(
       this.initModel.defaultFormat,
@@ -119,7 +119,7 @@
    * @param {Date} date
    *
    */
-  TimeFormatter.prototype.getQuarter = function(date) {
+  TimeFormatter.prototype.getQuarter = function (date) {
     var quarterMap = ["春季", "夏季", "秋季", "冬季"];
     return quarterMap[Math.floor((_validDate(date).getMonth() + 3) / 3) - 1];
   };
@@ -128,12 +128,16 @@
    * @param {String} selector  选择器
    *
    */
-  TimeFormatter.prototype.renderDynamicTime = function(selector, time) {
+  TimeFormatter.prototype.renderDynamicTime = function (selector) {
+    var timer = null;
+    if (timer) {
+      clearInterval(timer);
+    }
     var dom = document.querySelector(selector);
-    var timer = setInterval(function() {
+    timer = setInterval(function () {
       dom.innerHTML = _timeFormatterInstance.getDateStr("hh:MM:ss");
     }, 1000);
-    window.onbeforeunload = function() {
+    window.onbeforeunload = function () {
       clearInterval(timer);
     };
   };
@@ -142,7 +146,7 @@
    * @param {Date} date
    *
    */
-  TimeFormatter.prototype.getAMPM = function(date) {
+  TimeFormatter.prototype.getAMPM = function (date) {
     return _validDate(date).getHours() < 12 ? "上午" : "下午";
   };
   /**
@@ -150,8 +154,8 @@
    * @param {Date} dateArr
    * @param {Boolean} isAsc
    */
-  TimeFormatter.prototype.dateArraySort = function(dateArr, isAsc) {
-    return dateArr.sort(function(a, b) {
+  TimeFormatter.prototype.dateArraySort = function (dateArr, isAsc) {
+    return dateArr.sort(function (a, b) {
       if (isAsc) {
         return Date.parse(a) - Date.parse(b);
       }
@@ -163,7 +167,7 @@
    * @param {Date} date
    *
    */
-  TimeFormatter.prototype.getTimestamp = function(date) {
+  TimeFormatter.prototype.getTimestamp = function (date) {
     return _validDate(date).getTime();
   };
 
@@ -172,7 +176,7 @@
    * @param {Date} date
    * @param {String} _format 需要转换后的时间格式
    */
-  TimeFormatter.prototype.getDateStr = function(_format, date) {
+  TimeFormatter.prototype.getDateStr = function (_format, date) {
     var date = _validDate(date);
     _format = _format || this.initModel.defaultFormat;
 
