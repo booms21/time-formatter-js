@@ -1,21 +1,24 @@
 # time-formatter-js
-一个简单便捷的js时间类型格式化工具库（兼容IE）
+一个简单易用的js时间类型格式化工具库（兼容IE）
 ## 例子：
 ```
-//创建一个timeFormatter实例，传入的对象可省略
+//引入timeFormatter.js
+//使用方式非常简单，创建一个timeFormatter实例，传入的对象可省略
  var timeFormatter = new TimeFormatter({
  isAddPrefixZero: true,//是否给时间增加前缀0，默认为true
  });
  timeFormatter.getDateStr('yyyy-mm-dd hh:MM:ss:S D ap q')// "2021-02-20 23:17:44:726 星期六 下午 春季".  默认格式yyyy-mm-dd hh:MM:ss
 ```
+
+
 ## 方法（API）：
 #### getDateStr 
-根据时间格式对对应的时间进行转换
+根据时间格式对时间进行转换，返回一个时间字符串
  ```
 getDateStr（format, date）
 
- _format：
- 对应转换后的时间格式 ，可自定义里面的格式和占位符
+ format：
+ 对应转换后的时间格式 ，字符串类型，可自定义里面的格式和占位符
       yyyy:   // 年
       mm:     // 月
       dd:    // 日
@@ -32,7 +35,7 @@ getDateStr（format, date）
  ```
 
 #### dateArraySort:
-对时间数组进行排序
+对时间数组进行排序，返回排序后的数组
 ```
 dateArraySort(dateArr, isAsc)
 dateArr 时间数组
@@ -83,13 +86,15 @@ getQuarter(date)
 date 时间，不传递则默认今天
 ```
 #### renderDynamicTime:
-渲染一个跳动的时间dom
+渲染一个跳动的时间 格式：hh：MM：ss
 ```
 renderDynamicTime(selector)
 selector 渲染的目标dom节点选择器
 ```
 #### getTimestamp: 
 获取时间戳
+
+
 
 
 
