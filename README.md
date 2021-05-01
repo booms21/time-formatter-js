@@ -1,5 +1,6 @@
 # time-formatter-js
-一个简单易用的js时间类型格式化工具库（兼容IE）
+一个简单易用的js时间类型格式化工具库 ⏰（兼容IE）
+
 大小：4KB
 
 NPM 地址：https://www.npmjs.com/package/datetime-fmt
