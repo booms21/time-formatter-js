@@ -9,7 +9,7 @@ NPM 地址：https://www.npmjs.com/package/datetime-fmt
 npm install datetime-fmt
 ```
 ## 例子：
-```
+```javascript
 //引入timeFormatter.js
 //使用方式非常简单，创建一个timeFormatter实例，传入的对象可省略
  var timeFormatter = new TimeFormatter({
@@ -22,7 +22,7 @@ npm install datetime-fmt
 ## 方法（API）：
 #### getDateStr 
 根据时间格式对时间进行转换，返回一个时间字符串
- ```
+ ```javascript
 getDateStr（format, date）
 
  format：
